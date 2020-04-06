@@ -1,0 +1,113 @@
+<!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<head>
+    <title>véhicule</title>
+    <meta charset="UTF-8"></meta>
+</head>
+<body>
+<div layout:fragment="breadcrumb">
+    <h1 >Liste des v&eacutehicules</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> admin</a></li>
+        <li class="active">List des v&eacute;hicules</li>
+    </ol>
+</div>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <a class="box-title btn btn-primary" th:href="@{/vehicule/form}">Ajouter v&eacutehicule </a>
+
+
+                    <div class="box-tools">
+                        <form th:action="@{/vehicule/list}" method="get">
+                            <div class="input-group input-group-sm" style="width: 250px;">
+                                <input type="text" name="value" class="form-control pull-right"
+                                       placeholder="Rechercher par matricule" th:if="${key} == null"/>
+                                <input type="text" name="value" class="form-control pull-right"
+                                       placeholder="Pencarian Berdasarkan Nama" th:if="${key} != null"
+                                       th:value="${key}"/>
+                                       <input type="text" name="value" class="form-control pull-right"
+                                       placeholder="Pencarian Berdasarkan Nama" th:if="${key} != null"
+                                       th:value="${key}"/>
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <span sd:page-size-selector="javascript"></span> 
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                          
+                                <th><a class="fa fa-fw fa-sort"><a class="sorted" sd:pagination-sort="matricule">Matricule</th>
+                                <th><a class="fa fa-fw fa-sort"><a class="sorted" sd:pagination-sort="véhicule">Mod&eacutele
+                                </th>
+                                 <th><a class="fa fa-fw fa-sort"><a class="sorted" sd:pagination-sort="véhicule">Marque</th>
+                                 <th><a class="fa fa-fw fa-sort"><a class="sorted" sd:pagination-sort="véhicule">capacit&egrave
+                                </th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                          <!-- <tr th:each="véhicule : ${véhicules}"> -->   
+                            
+                            <tr th:each="vehicule: ${vehicules}">
+                         
+                              <td th:text="${vehicule.matricule}"></td>
+                               <td th:text="${vehicule.modele}"></td>
+                                <td th:text="${vehicule.marque}"></td>
+                                <td th:text="${vehicule.capacite}"></td>
+                                  
+                                
+                           
+                            <!-- <td th:text="${.count}">1</td>
+                                <td th:text="${st.nama}">Jabatan</td>
+                                <td th:text="${st.keterangan}">Keterangan</td> -->  
+                                <td>
+                                    <a href="#" class="btn btn-default" th:href="@{/vehicule/form(id=${vehicule.id})}"
+                                       title="Edit Data"><span class="glyphicon glyphicon-edit"></span></a>
+                                    <a href="#" class="btn btn-default" th:href="@{/vehicule/delete(id=${vehicule.id})}"
+                                       title="Delete Data"><span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
+                            </tr>
+                            
+           <!--             < <tr th:if="${#lists.isEmpty(vehicules.content)}">
+                                <td colspan="13" class="text-center">Données sur véhicule non trouvées</td>
+                            </tr>      
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div th:if="${not #lists.isEmpty(vehicules.content)}">
+
+                    <div sd:pagination-summary="">info</div>
+                    <div class="text-center">
+                        <nav>
+                            <ul class="pagination" sd:pagination="full">-->
+                                <!-- Pagination created by SpringDataDialect, this content is just for mockup -->
+                              <!--    <li class="disabled"><a href="#" aria-label="Previous"><span
+                                        aria-hidden="true">&laquo;</span></a></li>
+                                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+-->
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

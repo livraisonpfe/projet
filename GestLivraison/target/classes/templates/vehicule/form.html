@@ -1,0 +1,98 @@
+<!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<head>
+<title>véhicule</title>
+<meta charset="UTF-8"></meta>
+<style>
+.inval{ border: 1px solid red;}
+</style>
+</head>
+<body>
+	<div layout:fragment="breadcrumb">
+		<h1>Ajouter v&eacutehicule</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+			<li class="active">Ajouter V&eacutehicule</li>
+		</ol>
+	</div>
+	<div layout:fragment="content">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<h3 class="box-title">&nbsp;</h3>
+					</div>
+					<!-- /.box-header -->
+					<!-- form start -->
+					<form role="form" th:object="${vehicule}" method="post"
+						th:action="@{/vehicule/form}">
+						<div class="box-body">
+							<p class="error-message" th:if="${#fields.hasGlobalErrors()}"
+								th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation
+								error</p>
+								
+									<div class="form-group">
+							<label class="control-label" for="matricule">Matricule</label> <input
+								type="text" th:field="*{matricule}" name="matricule"
+								class="form-control" id="matricule"
+								placeholder="saisir le matricule de véhicule"
+								th:classappend="${#fields.hasErrors('matricule')}?'inval':''" />
+
+
+							<label class="control-label error-label"
+								th:if="${#fields.hasErrors('matricule')}"
+								th:errors="*{matricule}"> </label>
+						</div>
+
+
+
+						<div class="form-group" id="marque">
+							<label for="marque">Marque</label> <select class="form-control"
+								th:field="*{marque}"
+								th:classappend="${#fields.hasErrors('matricule')}?'inval':''">
+								<option value="Renault">Renault</option>
+								<option value="Fiat">Fiat</option>
+								<option value="Volkswagen">Volkswagen</option>
+								<option value="Ford">Ford</option>
+								<option value="Hyundai">Hyundai</option>
+
+								<option value="Mercedes-Benz">Mercedes-Benz</option>
+								<option value="Isuzu">Isuzu</option>
+								<option value="Mitsubishi">Mitsubishi</option>
+
+							</select>
+						</div>
+
+
+						<div class="form-group">
+							<label for="capacite">capacite</label> <input type="text"
+								th:field="*{capacite}" name="capacite" class="form-control"
+								id="capacite" placeholder="capacite"
+								th:classappend="${#fields.hasErrors('capacite')}?'inval':''" />
+							<label class="control-label error-label"
+								th:if="${#fields.hasErrors('capacite')}" th:errors="*{capacite}">
+
+							</label>
+						</div>
+						<div class="form-group">
+							<input type="hidden" th:field="*{id}" name="id"
+								class="form-control" id="marque" />
+						</div>
+
+						<div class="form-group">
+							<a th:href="@{/vehicule/list}" class="btn btn-default"
+								role="button" title="Back list"> <span aria-hidden="true"></span>retourner
+							</a>
+							<button type="submit" class="box-title btn btn-primary"
+								title="Save Data">Enregistrer</button>
+						</div>
+				</div>
+				<!-- /.box-body -->
+
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

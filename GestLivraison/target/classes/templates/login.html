@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="utf-8" />
+
+  <head>
+    <title>Livraison &mdash;</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,700|Oswald:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+ <link rel="stylesheet" type="text/css" href="css/interface.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/aos.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style type="text/css"> 
+    </style>
+
+  </head>
+
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+    <div id="overlayer"></div>
+    <div class="loader">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+    <div class="site-wrap" id="home-section">
+
+      <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+
+
+      <div class="top-bar" th:insert="bar.html">
+     
+      </div>
+       <header class="site-navbar js-sticky-header site-navbar-target" role="banner" th:insert="EnteteAccueil.html">
+
+      </header>
+       </div>
+       
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+    <!-- Icon -->
+    <div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="images/cl.jpg" id="icon" alt="image" />
+    </div>
+
+        <form th:action="@{/login}" method="post">
+          <div th:if="${param.error}">
+            <div class="alert alert-danger">Email ou mot de passe incorrecte</div>
+          </div>
+          <div th:if="${param.logout}">
+            <div class="alert alert-info">Vous avez été déconnecté.</div>
+          </div>
+          
+            <input type="text" id="username" class="fadeIn second" name="username" 
+       placeholder="Email" />
+               <input type="password" id="password" name="password" class="fadeIn third"placeholder="Password" />
+          <input type="submit" name="login-submit" id="login-submit"
+                  class="fadeIn fourth" value="Se connecter" />      
+          </form>
+           <!-- Remind Passowrd -->
+                        <div id="formFooter">
+      <a class="underlineHover" href="/" th:href="@{/registration}">Créer un compte</a>
+        </div>
+      </div>
+  
+</div>
+</div>
+
+  </div>
+</div>
+
+      <div th:insert="script.html"></div>
+</body>
+</html>
